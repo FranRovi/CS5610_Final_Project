@@ -1,30 +1,33 @@
 import { BrowserRouter } from 'react-router-dom';
 import { Routes, Route } from 'react-router';
-import NewActivity from './Activities/activity-new';
-import ListActivity from './Activities/activity-list';
+import { Provider } from 'react-redux';
+import BookInfo from './Books/book-info';
+import BookList from './Books/book-list';
 import Register from './Logging/register';
 import SignIn from './Logging/sing-in';
+import Profile from './User/profile';
+import ProfileEdit from  './User/profile-edit';
+import Nav from  './Nav';
+import store from './Redux/store';
 
 function App() {
   return (
-    <BrowserRouter>
-      
-        <div className="container text-danger">
-          <h1>Final Project</h1>
-          <h1>Activity planner</h1>
-          <Routes>
-            <Route path="/login" element={<SignIn />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/activity/new" element={<NewActivity />} />
-            <Route path="/activity" element={<ListActivity />} />
-            
-
-          </Routes>
-          
-        </div>
-      
-    </BrowserRouter>
-    
+    <Provider store={store}>
+      <BrowserRouter>
+          <div className="container">
+            <Nav/>
+            <Routes>
+              <Route path="/login" element={<SignIn />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/books/details/:bid" element={<BookInfo />} />
+              <Route path="/books" element={<BookList />} />
+              <Route path="/books/:searchTerm" element={<BookList />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/profile/edit" element={<ProfileEdit />} />
+            </Routes>
+          </div>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
