@@ -32,18 +32,18 @@ const Register = () => {
 
     return(
         <>
-            <div className='row mt-4'>
+            {/* <div className='row mt-4'>
                 <div className='container position-relative col-4'>
                     <h1 className="position-absolute text-white wd-title-overlap-register">Register</h1>
                     <img src='../../images/web_dev_final_bookshelf.jpeg' width={250} className='rounded-2' alt='bookshelf filled with books'/>
                 </div>
-            </div>
+            </div> */}
             <div className='row mt-4'>
-                <div className='container position-relative col-4'>
+                <div className='container position-relative col-3 d-none d-s-none d-md-none d-lg-block'>
                     <h1 className="position-absolute text-white wd-title-overlap-register">Register</h1>
                     <img src='../../images/web_dev_final_bookshelf.jpeg' width={250} className='rounded-2' alt='bookshelf filled with books'/>
                 </div>
-                <div className='container col-6'>
+                <div className='container col-7'>
                     <div className='form-group'>
                         <label>First Name</label>
                         <input type="text"
@@ -91,11 +91,11 @@ const Register = () => {
                             value={confirmPassword}
                             onChange={e => {
                                 setConfirmPassword(e.target.value)}}/>
-                    </div>
+                    </div>                    
                         {
-                            password !== confirmPassword || password.length === 0 ? <button className="btn btn-primary m-1" disabled> Register</button> : <button className="btn btn-primary m-1" onClick={createUser}> Register </button> 
+                            password !== confirmPassword || password.length === 0 ? <div className='text-center'><button className="btn btn-primary m-1 mt-2" disabled> Register</button></div> : <div className='text-center'><button className="btn btn-primary m-1 mt-2" onClick={createUser}> Register </button></div> 
                         }
-                    <p className="text-secondary text-center">Already have an account? Sign in <Link to='/login'>here</Link></p>
+                    <p className="text-secondary text-center mt-5">Already have an account? Sign in <Link to='/login'>here</Link></p>
                     <p className="text-secondary text-center">Procced as a guest with limited interaction by clicking <Link to="/books">here</Link></p>
                 </div>
             </div>

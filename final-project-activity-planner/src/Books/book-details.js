@@ -1,9 +1,7 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { userLikesAuthor } from '../services/likes/likes-service';
-import { userLikesNovel } from '../services/likes/likes-service';  
-// import { useParams } from 'react-router-dom'
+import { userLikesAuthor, userLikesNovel  } from '../services/likes/likes-service';
 
 const BookDetail = (props) => {
     console.log(props.book);
@@ -18,13 +16,13 @@ const BookDetail = (props) => {
     }
 
     const likeAuthor = async () => {
-        const response = await userLikesNovel(currentUser._id, props.book.authors[0]);
+        const response = await userLikesAuthor(currentUser._id, props.book.authors[0]);
         console.log(response);
         //navigate('/books');
     }
 
     const likeNovel = async () => {
-        const response = await userLikesAuthor(currentUser._id, props.id);
+        const response = await userLikesNovel(currentUser._id, props.id);
         console.log(response);
         //navigate('/books');
     }
@@ -49,16 +47,20 @@ const BookDetail = (props) => {
                         <span className="">Page count: {props.book.pageCount}</span>
                     </div>
                     <div>
-                        <button onClick={goBack} className='btn btn-primary m-3'>Go Back</button>
                         { currentUser && 
                             <div className="">
                                 <button onClick={likeAuthor} className='btn btn-primary m-3'>Like Author</button>
+                                <button className='btn btn-danger m-3'>Unlike Author</button>
                                 <button onClick={likeNovel} className='btn btn-primary m-3'>Like Novel</button>
+                                <button className='btn btn-danger m-3'>Unlike Novel</button>
                             </div>
                         }
+                        <div className="text-center">
+                            <button onClick={goBack} className='btn btn-primary m-3'>Go Back</button>
+                        </div>
                     </div>
                 </div> 
-                <div className="container col-5">
+                <div className="container col-5 d-none d-s-none d-md-none d-lg-block">
                     {<img src={props.book.imageLinks.medium} alt="Book's cover"/>}
                 </div> 
             </div>}

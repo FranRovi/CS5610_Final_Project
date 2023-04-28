@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { AiFillStar } from 'react-icons/ai';
+import './books.css';
 
 const BookCard = (props) => {
     console.log(props);
@@ -9,8 +10,8 @@ const BookCard = (props) => {
     console.log(props.volumeInfo.imageLinks === undefined);
 
     return(
-        <div className='border border-primary w-25 text-center m-2'>
-            <h4 className='p-1'>{props.volumeInfo.title}</h4>
+        <div className='border border-dark w-25 text-center m-2 card-width-height'>
+            <h5 className='p-1 card-book-title'>{props.volumeInfo.title}</h5>
             {props.volumeInfo.imageLinks === undefined ? <img alt='image not available' src='../../images/web_dev_image_na.png' width={150}/> : <img alt='book cover' src={props.volumeInfo.imageLinks.smallThumbnail} className="" height={200} width={128}/>}
             <div className="bg-dark">   
             {props.volumeInfo.authors === undefined ? <h6 className='mt-2 pt-2 text-white'>Author: N/A</h6> : <h6 className='mt-2 pt-2 text-white'>Author: {props.volumeInfo.authors[0]}</h6>}

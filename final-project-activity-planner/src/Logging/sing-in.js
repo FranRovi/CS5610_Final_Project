@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { loginThunk } from '../services/users/users-thunk';
+import { loginThunk, profile } from '../services/users/users-thunk';
 import './logging.css';
 
 
 const SignIn = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [ email, setEmail ] = useState('');
+    const [ password, setPassword ] = useState('');
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { currentUser } = useSelector(state => state.users);
@@ -45,11 +45,13 @@ const SignIn = () => {
                             onChange={e => {
                                 setPassword(e.target.value)}}/>
                     </div>
-                    <button onClick={login} className="btn btn-primary m-1"> Sign In</button>
-                    <p className="text-secondary text-center">Don't have an account already? Get one <Link to="/register">here</Link></p>
+                    <div className='text-center'>
+                        <button onClick={login} className="btn btn-primary m-1 mt-2"> Sign In</button>
+                    </div>
+                    <p className="text-secondary text-center mt-5">Don't have an account already? Get one <Link to="/register">here</Link></p>
                     <p className="text-secondary text-center">Procced as a guest with limited interaction by clicking <Link to="/books">here</Link></p>
                 </div>
-                <div className='container position-relative col-4'>
+                <div className='container position-relative col-4 d-none d-s-none d-md-block'>
                     <h1 className="position-absolute text-white wd-title-overlap-login">Login</h1>
                     <img src='../../images/web_dev_final_bookshelf.jpeg' width={250} className='rounded-2' alt='bookshelf filled with books'/>
                 </div>

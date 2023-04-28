@@ -1,9 +1,9 @@
 .wd-title-overlap-login{
-    bottom: 10px;
-    left: 160px;
+    bottom: 20px;
+    left: 140px;
 }
 .wd-title-overlap-register{
-    bottom: 10px;
-    left: 110px;
-    background-color: black;
+    top: 10px;
+    left: 40px;
+    /* background-color: black; */
 }
